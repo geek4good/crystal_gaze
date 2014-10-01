@@ -1,8 +1,20 @@
 require "test_helper"
+require "open3"
 
 describe "when executing bin/predict" do
   # given some sample data
-  # when I run `predict "Steve Wozniak" "apple.com"`
-  # then I should see the following output:
-  # ...
+  samples = {
+    "John Ferguson" => "john.ferguson@alphasights.com",
+    "Damon Aw" => "damon.aw@alphasights.com",
+    "Linda Li" => "linda.li@alphasights.com",
+    "Larry Page" => "larry.p@google.com",
+    "Sergey Brin" => "s.brin@google.com",
+    "Steve Jobs" => "s.j@apple.com"
+  }
+
+  it "predicts somebody's email address given their name and a domain" do
+    output, _ = Open3.capture2e("bin/predict", :stdin_data => "'Steve Wozniak' apple.com")
+
+    assert_equal("s.w@apple.com", output)
+  end
 end
