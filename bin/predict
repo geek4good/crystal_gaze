@@ -1,1 +1,6 @@
 #!/usr/bin/env ruby
+
+name, domain = ARGV
+
+crystal_ball = CrystalGaze::CrystalBall.new
+puts crystal_ball.predict(:name => name, :domain => domain)
