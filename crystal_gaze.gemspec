@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = CrystalGaze::VERSION
   spec.authors       = ["Lucas Mbiwe"]
   spec.email         = ["lucas@geek4good.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Predict about anything – except maybe the future.}
+  spec.description   = %q{Predict stuff by gazing into a crystal ball, contacting the spirit world and all that jazz.}
+  spec.homepage      = "https://github.com/geek4good/crystal_gaze"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
