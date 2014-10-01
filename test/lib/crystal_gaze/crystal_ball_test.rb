@@ -12,6 +12,7 @@ module CrystalGaze
     end
 
     let(:spirit_world) { MiniTest::Mock.new }
+    let(:email_vision) { MiniTest::Mock.new }
 
     describe "#config" do
       it "exposes its configuration" do
@@ -25,10 +26,11 @@ module CrystalGaze
       let(:domain) { "apple.com" }
 
       it "enters the spirit world for a vision" do
-        spirit_world.expect(:vision_of, nil, [:email, :name => name, :domain => domain])
+        spirit_world.expect(:vision_of, email_vision, ["email"])
+        email_vision.expect(:experience, "woz@apple.com", [{ :name => name, :domain => domain }])
         subject.predict(asking)
 
-        assert spirit_world.verify
+        assert(spirit_world.verify && email_vision.verify)
       end
     end
   end

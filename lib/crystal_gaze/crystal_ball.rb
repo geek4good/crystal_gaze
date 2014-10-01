@@ -8,17 +8,12 @@ module CrystalGaze
 
     def predict(asking)
       vision_type = asking.delete(:vision_of)
+      vision = spirit_world.vision_of(vision_type)
 
-      case vision_type
-      when /email/i then predict_email(asking)
-      end
+      vision.experience(asking)
     end
 
     private
-
-    def predict_email(asking)
-      spirit_world.vision_of(:email, asking)
-    end
 
     def spirit_world
       config[:spirit_world]
