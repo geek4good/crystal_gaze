@@ -7,6 +7,14 @@ module CrystalGaze
         @visions ||= {}
       end
 
+      def exorcise
+        visions.clear
+      end
+
+      def absorb_vision(denomination, vision)
+        visions[denomination.downcase.to_sym] = vision
+      end
+
       def vision_of(vision_type)
         visions.fetch(vision_type.downcase.to_sym)
       rescue KeyError => e
