@@ -7,8 +7,8 @@ module CrystalGaze
     end
 
     def predict(asking)
-      vision_type = asking.delete(:vision_of)
-      vision = spirit_world.vision_of(vision_type)
+      vision_denomination = asking.delete(:vision_of)
+      vision = spirit_world.vision_of(vision_denomination)
 
       vision.experience(asking)
     end

@@ -15,8 +15,8 @@ module CrystalGaze
         visions[denomination.downcase.to_sym] = vision
       end
 
-      def vision_of(vision_type)
-        visions.fetch(vision_type.downcase.to_sym)
+      def vision_of(denomination)
+        visions.fetch(denomination.downcase.to_sym)
       rescue KeyError => e
         raise ImpenetrableMistError, e.message
       end

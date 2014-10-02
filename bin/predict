@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
-name, domain = ARGV
+lib = File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "crystal_gaze"
 
-crystal_ball = CrystalGaze::CrystalBall.new
-puts crystal_ball.predict(:name => name, :domain => domain)
+config = { :spirit_world => CrystalGaze::SpiritWorld }
+crystal_ball = CrystalGaze::CrystalBall.new(config)
+
+type, name, domain = ARGV
+puts crystal_ball.predict(:vision_of => type, :name => name, :domain => domain)

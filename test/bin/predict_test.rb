@@ -13,7 +13,8 @@ describe "when executing bin/predict" do
   }
 
   it "predicts somebody's email address given their name and a domain" do
-    output, _ = Open3.capture2e("bin/predict", :stdin_data => "'Steve Wozniak' apple.com")
+    input = %w(email Steve\ Wozniak apple.com)
+    output, _ = Open3.capture2e("bin/predict", *input)
 
     assert_equal("s.w@apple.com", output)
   end
