@@ -4,7 +4,22 @@ module CrystalGaze
   describe EmailVision do
     subject { EmailVision.new(spirit_traces) }
 
-    let(:spirit_traces) { { "Steve Jobs" => "s.j@apple.com" } }
+    let(:spirit_traces) {
+      {
+        "Larry Page" => "larry.p@google.com",
+        "Steve Jobs" => "s.j@apple.com"
+      }
+    }
+
+    describe "#initialize" do
+      it "save the spirit traces" do
+        assert_equal(spirit_traces, subject.spirit_traces)
+      end
+
+      it "populates the vision with spirits" do
+        assert_equal(spirit_traces.count, subject.spirits.count)
+      end
+    end
 
     describe "#experience" do
       it "reveals the protagonist's email address" do
