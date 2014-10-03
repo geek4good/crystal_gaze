@@ -8,15 +8,15 @@ module CrystalGaze
       end
 
       it "instanciates a matching manifestation for 'steve.j'" do
-        assert_instance_of(EmailManifestation::FirstNameDotLastInitial, EmailManifestation.of("steve.j"))
+        assert_equal("steve.j@apple.com", EmailManifestation.of("steve.j").present("Steve Jobs", "apple.com"))
       end
 
       it "instanciates a matching manifestation for 's.jobs'" do
-        assert_instance_of(EmailManifestation::FirstInitialDotLastName, EmailManifestation.of("s.jobs"))
+        assert_equal("s.jobs@apple.com", EmailManifestation.of("s.jobs").present("Steve Jobs", "apple.com"))
       end
 
       it "instanciates a matching manifestation for 'steve.jobs'" do
-        assert_instance_of(EmailManifestation::FirstNameDotLastName, EmailManifestation.of("steve.jobs"))
+        assert_equal("steve.jobs@apple.com", EmailManifestation.of("steve.jobs").present("Steve Jobs", "apple.com"))
       end
     end
   end
