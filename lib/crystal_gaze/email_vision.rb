@@ -12,7 +12,9 @@ module CrystalGaze
     def experience(protagonist)
       manifestations = spirits_of(protagonist[:domain]).map { |spirit|
         spirit.manifest_as(protagonist[:name])
-      }.compact.uniq
+      }.uniq
+
+      fail CloudedVisionError unless manifestations.count == 1
 
       manifestations.first
     end

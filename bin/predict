@@ -4,4 +4,16 @@ lib = File.expand_path("../../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "crystal_gaze"
 
-puts CrystalGaze.consult_crystal_ball(ARGV)
+begin
+  puts CrystalGaze.consult_crystal_ball(ARGV)
+rescue CrystalGaze::ImpenetrableMistError
+  $stderr.puts <<MSG
+You don't seem to have your mind set on the right thing.
+Try focusing on email addresses.
+MSG
+rescue CrystalGaze::CloudedVisionError
+  $stderr.puts <<MSG
+My vision is clouded.
+As a result the crystal ball does not show anything conclusive.
+MSG
+end
