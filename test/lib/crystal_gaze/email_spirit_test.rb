@@ -41,7 +41,7 @@ module CrystalGaze
 
     describe "#manifest_as" do
       it "can manifest as somebody else" do
-        assert_equal("s.b", subject.manifest_as("Steve Ballmer"))
+        assert_equal("s.b@apple.com", subject.manifest_as("Steve Ballmer"))
       end
 
       describe "without a manifestation" do

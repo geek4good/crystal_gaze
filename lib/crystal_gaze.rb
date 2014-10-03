@@ -3,6 +3,7 @@ require "crystal_gaze/crystal_ball"
 require "crystal_gaze/spirit_world"
 require "crystal_gaze/email_vision"
 require "crystal_gaze/email_spirit"
+require "crystal_gaze/email_manifestation"
 
 module CrystalGaze
   def self.consult_crystal_ball(asking)

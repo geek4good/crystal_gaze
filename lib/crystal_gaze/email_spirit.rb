@@ -6,14 +6,15 @@ module CrystalGaze
       @name = name
       @email = email
       @local_part, @domain = email.split("@")
+      @manifestation = EmailManifestation.of(local_part)
     end
 
     def manifest
-      manifest_as(name)
+      manifest_as(name, domain = domain)
     end
 
-    def manifest_as(name)
-      manifestation && manifestation.present(name)
+    def manifest_as(name, domain = domain)
+      manifestation && manifestation.present(name, domain)
     end
   end
 end
