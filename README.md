@@ -50,7 +50,7 @@ Or install it yourself as:
     $ gem install crystal_gaze
 
 If you just want to tinker with it, simply get the source code, change into the
-gems root directory, and call the executable like this `bin/predict`.
+gem's root directory, and call the executable like this `bin/predict`.
 
 ## Usage
 
