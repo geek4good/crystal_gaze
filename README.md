@@ -3,6 +3,8 @@
 Predict about anything – except for maybe the future.  
 Oh, and it only does email addresses right now…
 
+![Predict stuff with CrystalGaze](predict_stuff.png "Predict stuff with CrystalGaze")
+
 Looking into the crystal ball let's you take a peek into the spirit world.
 Spirits manifest themselves as people's email addresses as part of visions.
 The spirits present traces of real-world email addresses. Because of that and
