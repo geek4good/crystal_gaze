@@ -10,7 +10,7 @@ module CrystalGaze
     end
 
     def manifest
-      manifest_as(name, domain = domain)
+      manifest_as(name, domain)
     end
 
     def manifest_as(name, domain = domain)
