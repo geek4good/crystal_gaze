@@ -1,19 +1,55 @@
 #!/usr/bin/env ruby
 
+require "optparse"
+
 lib = File.expand_path("../../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "crystal_gaze"
 
+options = { :prediction => "email" }
+usage = ""
+
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: predict [options] 'John Doe' example.com"
+
+  opts.on("-p", "--prediction TYPE",
+          "Specify the type of prediction (default email)") do |p|
+    options[:prediction] = p
+  end
+
+  opts.separator ""
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "Show version") do
+    puts "CrystalGaze v#{CrystalGaze::VERSION}"
+    exit
+  end
+
+  opts.on_tail do
+    usage = opts.to_s
+  end
+end.parse!
+
 begin
-  puts CrystalGaze.consult_crystal_ball(ARGV)
+  unless ARGV.length == 2
+    print usage
+    exit 1
+  end
+
+  puts CrystalGaze.consult_crystal_ball(options[:prediction], ARGV)
 rescue CrystalGaze::ImpenetrableMistError
   $stderr.puts <<MSG
 You don't seem to have your mind set on the right thing.
 Try focusing on email addresses.
+
+#{usage}
 MSG
 rescue CrystalGaze::CloudedVisionError
   $stderr.puts <<MSG
-My vision is clouded.
-As a result the crystal ball does not show anything conclusive.
+My vision is clouded. The crystal ball does not show anything conclusive.
 MSG
 end

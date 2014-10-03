@@ -6,10 +6,10 @@ require "crystal_gaze/email_spirit"
 require "crystal_gaze/email_manifestation"
 
 module CrystalGaze
-  def self.consult_crystal_ball(asking)
+  def self.consult_crystal_ball(type, asking)
     set_the_mood
 
-    type, name, domain = asking
+    name, domain = asking
     @crystal_ball.predict(:vision_of => type, :name => name, :domain => domain)
   end
 
